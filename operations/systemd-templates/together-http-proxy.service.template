@@ -1,0 +1,25 @@
+# Together 本机 HTTP-to-SOCKS 转换层 — 生产可重建模板（脱敏）
+# 安装：复制为 /etc/systemd/system/together-http-proxy.service
+# 生产实际值（2026-09-14）：当前主出口 = 本服务（监听 127.0.0.1:8118 → SOCKS 127.0.0.1:7890 = mihomo 回环）。
+# 注意：http2socks 直连 mihomo（7890），不经过 SSH 隧道；SSH 1080 隧道（together-tunnel）为备用出口。
+[Unit]
+Description=Together HTTP-to-SOCKS proxy (loopback 8118 -> SOCKS 7890)
+After=together-tunnel.service network-online.target
+Wants=together-tunnel.service
+
+[Service]
+Type=simple
+User=together-tunnel
+ExecStart=/usr/bin/python3 /opt/together-tunnel/http2socks.py \
+    --listen 127.0.0.1 --port 8118 \
+    --socks 127.0.0.1 --socks-port 7890
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadOnlyPaths=/opt/together-tunnel
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+{
+  "name": "mcp-selfhost",
+  "version": "0.1.0",
+  "description": "Private local Desktop Commander MCP plugin for this Windows development machine.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "MCP Selfhost",
+    "shortDescription": "Use the private local Desktop Commander MCP from Codex.",
+    "longDescription": "Connects Codex to the self-hosted Desktop Commander bridge on this PC without using the third-party Remote Desktop Commander relay.",
+    "developerName": "Local developer",
+    "category": "DeveloperTools",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Inspect my local development environment safely.",
+      "Run a command on my Windows machine and show the result.",
+      "Read or edit files in my local project workspace."
+    ]
+  }
+}

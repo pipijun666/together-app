@@ -1,0 +1,13 @@
+# Together Hotspot Collector timer — 生产可重建模板（每 2 小时推送）
+# 安装：复制为 /etc/systemd/system/together-hotspots.timer
+# 生产实际值（2026-09-14）：OnCalendar=*-*-* 0/2:00:00，Persistent=true，RandomizedDelaySec=120
+[Unit]
+Description=Run Together Hotspot Collector every 2 hours
+
+[Timer]
+OnCalendar=*-*-* 0/2:00:00
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

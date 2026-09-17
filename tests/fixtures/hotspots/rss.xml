@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>Fixture</title>
+<item><guid>a-1</guid><title>First story</title><link>https://news.example.com/a?utm_source=x&amp;sig=keep</link><pubDate>Sun, 14 Sep 2026 01:00:00 GMT</pubDate><description>Summary one</description></item>
+<item><guid>a-2</guid><title>Second story</title><link>https://news.example.com/b?x=1</link><pubDate>Sun, 14 Sep 2026 02:00:00 GMT</pubDate></item>
+</channel></rss>

@@ -1,0 +1,17 @@
+# mihomo (Clash Meta) 代理 — 生产可重建模板（脱敏）
+# 安装：复制为 /etc/systemd/system/mihomo.service
+# 生产实际值（2026-09-14）：主出口代理，监听 127.0.0.1:7890（mixed-port）；配置 /etc/mihomo/config.yaml（含机场订阅 token，不落文档/Git）。
+[Unit]
+Description=mihomo (Clash Meta) proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/mihomo -d /etc/mihomo -f /etc/mihomo/config.yaml
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

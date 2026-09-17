@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "timezone": "Asia/Shanghai",
+  "per_run_limit": 3,
+  "daily_limit": 10,
+  "max_inflight": 2,
+  "freshness_hours": 48,
+  "sources": [
+    {
+      "id": "npr-news",
+      "name": "NPR News",
+      "kind": "rss",
+      "url": "https://feeds.npr.org/1001/rss.xml",
+      "enabled": false,
+      "priority": 50,
+      "network": "direct",
+      "allowed_article_hosts": ["npr.org"]
+    },
+    {
+      "id": "nasa-news",
+      "name": "NASA News",
+      "kind": "rss",
+      "url": "https://www.nasa.gov/news-release/feed/",
+      "enabled": false,
+      "priority": 45,
+      "network": "direct",
+      "allowed_article_hosts": ["nasa.gov"]
+    },
+    {
+      "id": "usgs-m45-day",
+      "name": "USGS M4.5+ Earthquakes - Past Day",
+      "kind": "atom",
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.atom",
+      "enabled": false,
+      "priority": 40,
+      "network": "direct",
+      "allowed_article_hosts": ["earthquake.usgs.gov"]
+    },
+    {
+      "id": "telegram-news-public",
+      "name": "Telegram News public channel",
+      "kind": "telegram_public_channel",
+      "url": "https://t.me/s/telegram",
+      "channel": "telegram",
+      "enabled": false,
+      "priority": 35,
+      "network": "source_proxy",
+      "region": "global",
+      "coverage": "selected_public_channel",
+      "allowed_article_hosts": ["t.me"]
+    },
+    {
+      "id": "x-worldwide-trends",
+      "name": "X Worldwide Trends",
+      "kind": "x_trends",
+      "url": "https://api.x.com/2/trends/by/woeid/1",
+      "bearer_token_env": "X_API_BEARER_TOKEN",
+      "max_trends": 3,
+      "enabled": false,
+      "priority": 35,
+      "network": "source_proxy",
+      "region": "worldwide",
+      "coverage": "x_trends_woeid:1",
+      "allowed_article_hosts": ["x.com"]
+    },
+    {
+      "id": "tiktok-creative-center-us",
+      "name": "TikTok Creative Center US Trends",
+      "kind": "tiktok_creative_center",
+      "url": "https://ads.tiktok.com/creative/creativeCenter/trends/video?period=7&region=US",
+      "enabled": false,
+      "priority": 30,
+      "network": "source_proxy",
+      "region": "US",
+      "coverage": "creative_center_trends"
+    },
+    {
+      "id": "json-example",
+      "name": "Example JSON Ranking",
+      "kind": "json",
+      "url": "https://example.com/hot.json",
+      "enabled": false,
+      "priority": 30,
+      "network": "direct",
+      "allowed_article_hosts": ["example.com"],
+      "mapping": {
+        "items_path": "data.items",
+        "url_path": "url",
+        "title_path": "title",
+        "id_path": "id",
+        "published_at_path": "published_at",
+        "rank_path": "rank"
+      }
+    }
+  ]
+}

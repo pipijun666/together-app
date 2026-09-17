@@ -1,0 +1,20 @@
+# Together Hotspot Collector (submit) — 生产可重建模板（脱敏）
+# 安装：复制为 /etc/systemd/system/together-hotspots.service，按实际环境替换全部 <PLACEHOLDER>。
+# 生产实际值（2026-09-14）：
+#   <APP_DIR>    = /srv/together/app
+#   <ENVFILE>    = /root/together-secrets/hotspots.env（600，内容不落文档/Git）
+#   <CONFIG>     = /srv/together/hotspots/hotspots.json
+#   <REPORT_DIR> = /srv/together/hotspots/reports（报告保留 14 天，由 ExecStartPost 清理）
+[Unit]
+Description=Together Hotspot Collector (submit)
+After=network-online.target docker.service mihomo.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=<APP_DIR>
+EnvironmentFile=<ENVFILE>
+ExecStart=/bin/bash -c 'ts=$$(date +%%Y%%m%%d-%%H%%M%%S); python3 -m collectors.hotspots --config <CONFIG> --submit --report <REPORT_DIR>/$${ts}.json'
+ExecStartPost=/usr/bin/find <REPORT_DIR> -name '*.json' -mtime +14 -delete
+TimeoutStartSec=540

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "desktop-commander-local": {
+      "type": "http",
+      "url": "http://127.0.0.1:18080/mcp",
+      "note": "Private local Desktop Commander MCP bridge. No third-party remote relay is used."
+    }
+  }
+}

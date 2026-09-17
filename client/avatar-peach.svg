@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgPeach" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF1F2"/>
+      <stop offset="100%" stop-color="#FECDD3"/>
+    </linearGradient>
+    <linearGradient id="peachBody" x1="30%" y1="10%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#FDA4AF"/>
+      <stop offset="45%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+    <linearGradient id="peachHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="peachLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="softPeachShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#E11D48" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="256" fill="url(#bgPeach)"/>
+  <circle cx="256" cy="256" r="238" fill="none" stroke="#FDA4AF" stroke-width="4" stroke-dasharray="8 8" opacity="0.6"/>
+
+  <!-- Stem and Leaves -->
+  <path d="M256 150 C256 115, 248 95, 238 80" fill="none" stroke="#881337" stroke-width="12" stroke-linecap="round"/>
+  <path d="M246 105 C190 75, 150 110, 165 145 C210 165, 240 135, 246 105 Z" fill="url(#peachLeafGrad)"/>
+  <path d="M244 108 Q205 125 170 143" fill="none" stroke="#047857" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+  <path d="M254 125 C285 105, 305 120, 300 140 C275 150, 255 135, 254 125 Z" fill="url(#peachLeafGrad)" opacity="0.85"/>
+
+  <!-- Peach Body with Soft Heart Silhouette -->
+  <path d="M256 160 C210 120, 110 160, 105 260 C100 340, 185 410, 256 430 C327 410, 412 340, 407 260 C402 160, 302 120, 256 160 Z" fill="url(#peachBody)" filter="url(#softPeachShadow)"/>
+  <path d="M256 168 C254 220, 254 250, 256 275" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Body Highlight -->
+  <ellipse cx="180" cy="225" rx="55" ry="40" fill="url(#peachHighlight)" transform="rotate(-25 180 225)"/>
+
+  <!-- Sweet Twinkling Eyes -->
+  <circle cx="205" cy="285" r="14" fill="#4C0519"/>
+  <circle cx="200" cy="280" r="5" fill="#FFFFFF"/>
+  <circle cx="211" cy="290" r="2.5" fill="#FFFFFF"/>
+
+  <circle cx="307" cy="285" r="14" fill="#4C0519"/>
+  <circle cx="302" cy="280" r="5" fill="#FFFFFF"/>
+  <circle cx="313" cy="290" r="2.5" fill="#FFFFFF"/>
+
+  <!-- Sweet Shy Rosy Cheeks -->
+  <ellipse cx="175" cy="310" rx="22" ry="13" fill="#BE123C" opacity="0.35"/>
+  <ellipse cx="337" cy="310" rx="22" ry="13" fill="#BE123C" opacity="0.35"/>
+
+  <!-- Sweet Smile -->
+  <path d="M242 308 Q256 324 270 308" fill="none" stroke="#4C0519" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Sweet Heart -->
+  <path d="M380 180 C380 170, 365 160, 355 172 C345 160, 330 170, 330 180 C330 195, 355 210, 355 210 C355 210, 380 195, 380 180 Z" fill="#F43F5E"/>
+  <circle cx="120" cy="200" r="5" fill="#FB7185"/>
+</svg>

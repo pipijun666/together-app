@@ -1,0 +1,20 @@
+{
+  "name": "mcp-selfhost-marketplace",
+  "interface": {
+    "displayName": "Mcp Selfhost Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "mcp-selfhost",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mcp-selfhost"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "DeveloperTools"
+    }
+  ]
+}

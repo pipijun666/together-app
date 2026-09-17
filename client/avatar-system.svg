@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">系统管理员头像</title>
+  <desc id="desc">温暖友好的空间小管家，带有科技小天线与暖星点缀。</desc>
+  <circle cx="256" cy="256" r="256" fill="#E2EBE9"/>
+  <circle cx="256" cy="256" r="214" fill="#FFF9F0"/>
+  <path d="M110 358c40 56 95 86 165 86 60 0 110-25 149-74-36 24-76 38-120 41-76 5-139-12-194-53Z" fill="#D5DFDC"/>
+  <path d="M256 150v-42" stroke="#527874" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="256" cy="98" r="14" fill="#EFA23D"/>
+  <circle cx="256" cy="98" r="20" fill="none" stroke="#F6C87C" stroke-width="4" stroke-dasharray="2 6"/>
+  <rect x="136" y="150" width="240" height="200" rx="90" fill="#5E8984"/>
+  <rect x="156" y="170" width="200" height="160" rx="72" fill="#719C97"/>
+  <rect x="176" y="196" width="160" height="116" rx="48" fill="#FBF8F1"/>
+  <ellipse cx="204" cy="268" rx="16" ry="8" fill="#F4A58D" opacity=".6"/>
+  <ellipse cx="308" cy="268" rx="16" ry="8" fill="#F4A58D" opacity=".6"/>
+  <path d="M206 242c8-8 18-8 26 0" fill="none" stroke="#3A4D4A" stroke-width="9" stroke-linecap="round"/>
+  <path d="M280 242c8-8 18-8 26 0" fill="none" stroke="#3A4D4A" stroke-width="9" stroke-linecap="round"/>
+  <path d="M242 272c9 9 20 9 28 0" fill="none" stroke="#3A4D4A" stroke-width="7" stroke-linecap="round"/>
+  <path d="M400 160c-15-18-42-6-42 16 0 20 24 35 42 50 18-15 42-30 50-22-15-42-16Z" fill="#EFA23D" opacity=".85"/>
+  <circle cx="112" cy="168" r="8" fill="#D8B46E"/>
+  <path d="M102 168h20M112 158v20" stroke="#FFF9F0" stroke-width="4" stroke-linecap="round"/>
+</svg>

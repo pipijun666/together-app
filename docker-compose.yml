@@ -1,0 +1,69 @@
+# 国内单机部署 Compose（DB-001）。
+# - app 仅在主机回环 127.0.0.1:8765 发布（Nginx 同机反代），不再暴露 18765/WG 端口；
+# - importer 使用 host network 直连本机回环服务与 SSH 隧道代理（127.0.0.1:8118/1080），不发布任何端口；
+# - 真实密钥与口令只放私有 .env / .env.worker，模板见 config/，禁止提交。
+# - 禁止执行 docker compose down -v（会删除卷数据）；升级前先备份 /srv/together/data。
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      DATA_DIR: /data
+      COOKIE_SECURE: '${COOKIE_SECURE:-1}'
+      NODE_ROLE: '${NODE_ROLE:-primary}'
+      MAX_MEDIA_BYTES: '${MAX_MEDIA_BYTES:-8589934592}'
+      MEDIA_X_ACCEL: '${MEDIA_X_ACCEL:-0}'
+      NO_PROXY: '127.0.0.1,localhost'
+    ports:
+      - '127.0.0.1:8765:8765'
+    volumes:
+      - /srv/together/data:/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    pids_limit: 128
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import json,urllib.request; assert json.load(urllib.request.build_opener(urllib.request.ProxyHandler({})).open('http://127.0.0.1:8765/healthz',timeout=3))['ok']"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+  importer:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    restart: unless-stopped
+    env_file: .env.worker
+    network_mode: host
+    depends_on:
+      app:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 1g
+    pids_limit: 256
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import pathlib,sys; sys.exit(0 if b'worker.py' in pathlib.Path('/proc/1/cmdline').read_bytes() else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+
+# 数据目录显式 bind 到 /srv/together/data（§5：SQLite 与活动媒体放本地磁盘，
+# 禁止 docker compose down -v 删除数据）

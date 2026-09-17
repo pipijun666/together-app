@@ -1,0 +1,37 @@
+# Together SSH 动态隧道（备用出口）— 生产可重建模板（脱敏）
+# 安装：复制为 /etc/systemd/system/together-tunnel.service，按实际环境替换 <PRIVATE_KEY_PATH>/<KNOWN_HOSTS_PATH>/<REMOTE_HOST>/<REMOTE_PORT>/<REMOTE_USER>。
+# 安全基线：专用密钥 + 固定 known_hosts + 受限远端账号；禁止 sshpass、明文密码、StrictHostKeyChecking=no。
+# 模板说明：出口远端为备用节点 SSH 端口；当前主出口走本地出口代理。
+# 密钥 material 不落文档/Git；<PRIVATE_KEY_PATH> 生产为 /etc/together-tunnel/id_ed25519（600）。
+[Unit]
+Description=Together SSH SOCKS tunnel (importer overseas egress)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=together-tunnel
+ExecStart=/usr/bin/ssh -N -T -F /dev/null -i <PRIVATE_KEY_PATH> \
+    -o UserKnownHostsFile=<KNOWN_HOSTS_PATH> \
+    -o StrictHostKeyChecking=yes \
+    -o BatchMode=yes \
+    -o IdentitiesOnly=yes \
+    -o PasswordAuthentication=no \
+    -o KbdInteractiveAuthentication=no \
+    -o ExitOnForwardFailure=yes \
+    -o ServerAliveInterval=30 \
+    -o ServerAliveCountMax=3 \
+    -o TCPKeepAlive=yes \
+    -o ConnectTimeout=20 \
+    -D 127.0.0.1:1080 \
+    -p <REMOTE_PORT> <REMOTE_USER>@<REMOTE_HOST>
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadOnlyPaths=/etc/together-tunnel
+
+[Install]
+WantedBy=multi-user.target

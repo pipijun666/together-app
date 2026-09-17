@@ -1,0 +1,51 @@
+# Environment variables & secrets
+.env
+.env.*
+!.env.template
+!*.env.template
+*.key
+*.jks
+*.keystore
+*.p12
+*.pem
+cookies.txt
+
+# Local data & SQLite databases
+data/
+*.sqlite3*
+*.db
+runtime/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+
+# IDE & OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Build & test outputs
+build/
+build_ssl/
+artifacts/
+.tools/
+android/build/
+android/build-*/
+
+# Binaries & packages
+*.apk
+*.idsig
+*.aab
+
+# Scratch scripts
+test_gemini*.py
+test_live*.py
+

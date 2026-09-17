@@ -1,0 +1,138 @@
+﻿{
+  "user_one": {
+    "user": {
+      "id": "one",
+      "name": "账号一"
+    }
+  },
+  "user_two": {
+    "user": {
+      "id": "two",
+      "name": "账号二"
+    }
+  },
+  "system_state": {
+    "ok": true,
+    "role": "primary",
+    "worker_recent_contact": true
+  },
+  "manual_shares": [
+    {
+      "id": "manual-share-001",
+      "title": "今天看到的猫咪咖啡馆",
+      "author": "one",
+      "author_name": "账号一",
+      "source_kind": "manual",
+      "status": "published",
+      "created": 1773660000,
+      "published": 1773660100,
+      "read": true,
+      "url": "https://example.com/cat-cafe",
+      "note": "这个周末一起去看看？",
+      "blocks": [
+        {"type": "paragraph", "text": "这家店里有好多布偶猫和橘猫，很治愈。"}
+      ],
+      "warnings": [],
+      "reactions": [{"user_id": "two", "emoji": "❤️"}],
+      "comments": [{"name": "账号二", "body": "好呀，周六下午去！", "created": 1773660200}],
+      "metadata": {"site_name": "example.com"}
+    },
+    {
+      "id": "manual-share-002",
+      "title": "草稿：新上映电影预告",
+      "author": "one",
+      "author_name": "账号一",
+      "source_kind": "manual",
+      "status": "review",
+      "created": 1773661000,
+      "read": false,
+      "url": "https://example.com/movie",
+      "note": "看起来制作很宏大",
+      "blocks": [
+        {"type": "paragraph", "text": "科幻巨制即将上线。"}
+      ],
+      "warnings": [],
+      "reactions": [],
+      "comments": [],
+      "metadata": {"site_name": "example.com"}
+    }
+  ],
+  "system_shares": [
+    {
+      "id": "sys-hotspot-001",
+      "title": "BBC World: Global Green Energy Milestone",
+      "author": "system",
+      "author_name": "系统管理员",
+      "source_kind": "system",
+      "status": "published",
+      "created": 1773650000,
+      "published": 1773650100,
+      "read": false,
+      "url": "https://t.me/BBCWorld/83852",
+      "note": "系统自动收录自 Telegram 公开频道",
+      "blocks": [
+        {"type": "paragraph", "text": "Renewable electricity reached a historic high worldwide this quarter."}
+      ],
+      "warnings": [],
+      "reactions": [{"user_id": "one", "emoji": "👀"}],
+      "comments": [{"name": "账号一", "body": "发展速度确实很快", "created": 1773650200}],
+      "metadata": {
+        "platform": "Telegram",
+        "author": "BBC World News",
+        "published_at": "2026-09-15T10:00:02Z",
+        "site_name": "Telegram @BBCWorld"
+      }
+    },
+    {
+      "id": "sys-hotspot-002",
+      "title": "NASA: James Webb Space Telescope New Deep Field Image",
+      "author": "system",
+      "author_name": "系统管理员",
+      "source_kind": "system",
+      "status": "published",
+      "created": 1773655000,
+      "published": 1773655100,
+      "read": true,
+      "url": "https://x.com/NASA/status/1835000000000000000",
+      "note": "系统自动收录自 X (Twitter)",
+      "blocks": [
+        {"type": "paragraph", "text": "Spectacular thousands of galaxies captured in high resolution infrared."}
+      ],
+      "warnings": [],
+      "reactions": [{"user_id": "two", "emoji": "❤️"}],
+      "comments": [],
+      "metadata": {
+        "platform": "X",
+        "author": "NASA",
+        "published_at": "2026-09-15T14:30:00Z",
+        "site_name": "x.com"
+      }
+    },
+    {
+      "id": "sys-hotspot-003",
+      "title": "Rick Astley - Never Gonna Give You Up (Official Music Video 4K Remaster)",
+      "author": "system",
+      "author_name": "系统管理员",
+      "source_kind": "system",
+      "status": "published",
+      "created": 1773658000,
+      "published": 1773658200,
+      "read": false,
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "note": "YouTube 经典音乐视频推荐",
+      "blocks": [
+        {"type": "paragraph", "text": "The classic remastered in stunning 4K 60fps."},
+        {"type": "video", "src": "/media/sample-video.mp4", "poster": "/media/sample-poster.jpg"}
+      ],
+      "warnings": [],
+      "reactions": [{"user_id": "one", "emoji": "😂"}],
+      "comments": [],
+      "metadata": {
+        "platform": "YouTube",
+        "author": "Rick Astley",
+        "published_at": "2026-09-15T08:00:00Z",
+        "site_name": "youtube.com"
+      }
+    }
+  ]
+}
